@@ -11,8 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F25E48D5-6E83-4D44-9C64-DF685BB2F809}</ProjectGuid>
+    <ProjectGuid>{C5E23804-82BF-40B9-AA62-5D7A1820B426}</ProjectGuid>
     <RootNamespace>RealTimeSnowSimulationCUDA</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -22,7 +23,7 @@
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
@@ -41,6 +42,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -56,6 +61,11 @@
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)\x64\Release\RealTimeSnowSimulationCUDA.lib" "$(ProjectDir)\..\RealTimeSnowUE\CUDALib"
+
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -75,12 +85,27 @@
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
     </CudaCompile>
+    <PostBuildEvent>
+      <Command>copy "$(ProjectDir)\x64\Release\RealTimeSnowSimulationCUDA.lib" "$(ProjectDir)\..\RealTimeSnowUE\CUDALib\lib"
+xcopy "$(ProjectDir)\header\*" "$(ProjectDir)\..\RealTimeSnowUE\CUDALib\include\" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="SnowCuda.cu" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CudaIntellisense.hpp" />
+    <ClInclude Include="header\CohesionForce.cuh" />
+    <ClInclude Include="header\Collision.cuh" />
+    <ClInclude Include="header\Common.cuh" />
+    <ClInclude Include="header\Compression.cuh" />
+    <ClInclude Include="header\CountNeighbor.cuh" />
+    <ClInclude Include="header\Friction.cuh" />
+    <ClInclude Include="header\FRNN.cuh" />
+    <ClInclude Include="header\InitParticle.cuh" />
+    <ClInclude Include="header\MoveInteractingCollider.cuh" />
+    <ClInclude Include="header\MoveParticle.cuh" />
+    <ClInclude Include="header\SnowCuda.h" />
+    <ClInclude Include="header\Thermodynamics.cuh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
