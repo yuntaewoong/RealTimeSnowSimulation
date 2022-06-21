@@ -15,6 +15,8 @@
 
 ## 프로젝트 소개
 CUDA와 언리얼을 이용해서 실시간 눈 시뮬레이션 구현  
+[소개 유튜브 영상](https://www.youtube.com/watch?v=Uq0_VH8rX-c&t=10s)
+
 ### 눈 시뮬레이션
 <img src = "gifs/SnowDeformation.gif" width = "800" height = "400">
 
@@ -27,7 +29,20 @@ CUDA와 언리얼을 이용해서 실시간 눈 시뮬레이션 구현
 
 <img src = "gifs/Jump.gif" width = "800" height = "400">
 
-Dem모델을 사용해서 충돌처리
+Dem모델을 사용해서 충돌처리 구현
+
+### Screen Space Rendering
+
+<img src = "gifs/ScreenSpaceRendering.png" width = "800" height = "400">
+
+Screen Space Rendering기술로 particle들의 시각화 구현
+
+### FrameRate
+
+<img src = "gifs/GoodFrame.gif" width = "800" height = "400">
+
+구역별 시뮬레이션으로 적절한 FPS확보(3070ti기준)
+
 ## Installation
 * `git clone [레포지토리 주소]` 로 프로젝트 Clone
 * `RealTimeSnowSimulationCUDA/RealTimeSnowSimulationCUDA.vcxproj` 파일을 `visual studio 2022`프로그램으로 실행
