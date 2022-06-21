@@ -1,4 +1,5 @@
 # Real Time Snow Simulation
+<img src = "gifs/Basic.gif" width = "800" height = "400">
 
 ## 프로젝트 개요
 2022년 2학기 소프트웨어 융합학과 게임공학 수업 텀프로젝트  
@@ -14,7 +15,19 @@
 
 ## 프로젝트 소개
 CUDA와 언리얼을 이용해서 실시간 눈 시뮬레이션 구현  
+### 눈 시뮬레이션
+<img src = "gifs/SnowDeformation.gif" width = "800" height = "400">
 
+<img src = "gifs/FallingSnow.gif" width = "800" height = "400">
+
+[Real Time Particle Based Snow Simulation On GPU](https://www.diva-portal.org/smash/get/diva2:1320769/FULLTEXT01.pdf)  
+
+논문을 참조하여 ue4 상에서 gpu-based particle simulation구현
+### Boundary Condition
+
+<img src = "gifs/Jump.gif" width = "800" height = "400">
+
+Dem모델을 사용해서 충돌처리
 ## Installation
 * `git clone [레포지토리 주소]` 로 프로젝트 Clone
 * `RealTimeSnowSimulationCUDA/RealTimeSnowSimulationCUDA.vcxproj` 파일을 `visual studio 2022`프로그램으로 실행
